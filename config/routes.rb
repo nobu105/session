@@ -10,33 +10,31 @@ devise_for :users, controllers: {
 
 get 'homes/top' => 'homes#top', as: 'user_top'
 get 'homes/about' => 'homes#about', as: 'user_about'
-resources :users, only: [:show, :edit]
- get 'users/:id/unsubscribe' => 'users#unsubscribe', as: 'user_unsubscribe'
- patch 'users/:id/unsubscribe' => 'users#unsubscribe_done', as: 'user_unsubscribe_done'
- put '/users/:id/unsubscribe' => 'users#unsubscribe_done', as: 'users_unsubscribe_done'
+resources :users, only: [:show, :edit, :update]
+  get 'users/:id/unsubscribe' => 'users#unsubscribe', as: 'user_unsubscribe'
+  patch 'users/:id/unsubscribe' => 'users#unsubscribe_done', as: 'user_unsubscribe_done'
+  put '/users/:id/unsubscribe' => 'users#unsubscribe_done', as: 'users_unsubscribe_done'
 
 resources :items, only: [:new, :create, :index, :show] do
-  resource :ikes, only: [:create, :destroy]
+  resources :likes, only: [:create, :destroy]
   resources :comments, only: [:create, :destroy]
   end
-end
 
 # 管理者用サイトのrouting
 devise_scope :admins do
-  devise_for :admins, controllers: {
+	devise_for :admins, controllers: {
     registrations: 'admins/registrations',
     passwords: 'admins/passwords',
-    sessions: 'admins/sessions'
-  }
+    sessions: 'admins/sessions'}
 end
 
 namespace :admins do
-  get 'homes/top' => 'homes#top', as:'top'
-  resources :users, only: [:index, :edit, :show, :update]
-  get 'search' => 'searches#search', as: 'search'
+	get 'homes/top' => 'homes#top', as:'top'
+	resources :users, only: [:index, :edit, :show, :update]
+
+    get 'search' => 'searches#search', as: 'search'
 end
 
 end
-
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 

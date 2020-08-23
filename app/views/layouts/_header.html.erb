@@ -1,0 +1,38 @@
+<header class="container-fluid">
+  <nav class="navbar navbar-expand-lg">
+    <!-- ロゴ画像 -->
+	<div>
+      <%= link_to user_top_path, style: 'color: #fcbf1e' do %>
+        <h1>LOGO</h1>
+      <% end %>
+    </div>
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarEexample2">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </button>
+    
+    <!-- 各種リンク　管理者、ユーザー、非ログインで切り替え -->
+    <div class="collaspe navbar-collapse">
+	  <!-- 管理者 -->
+      <ul class="nav navbar-nav navbar-right">
+        <% if admin_signed_in? %>
+          <div class="admin-message">管理者としてログインしています</div>
+          <li class="nav-item"><%= link_to '会員一覧', admins_users_path, class: 'nav-link' %></li>
+          <li class="nav-item"><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: 'nav-link' %></li>
+        <!-- 会員 -->
+        <% elsif user_signed_in? %>
+          <li class="nav-item"><%= link_to 'About', user_about_path, class: 'nav-link' %></li>
+          <li class="nav-item"><%= link_to 'マイページ', user_path(current_user.id), class: 'nav-link' %></li>
+          <li class="nav-item"><%= link_to '一覧', items_path, class: 'nav-link' %></li>
+          <li class="nav-item"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link' %></li>
+        <!-- 非ログイン -->
+        <% else %>
+          <li class="nav-item"><%= link_to 'About', user_about_path, class: 'nav-link' %></li>
+          <li class="nav-item" ><%= link_to '新規登録', new_user_registration_path, class: 'nav-link' %></li>
+          <li class="nav-item"><%= link_to 'ログイン', new_user_session_path, class: 'nav-link' %></li>
+        <% end %>
+      </ul>
+  </nav>
+</header>
