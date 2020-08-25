@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h2><i class="fas fa-user"></i> 会員一覧</h2>
+      <br>
+	    <!--会員一覧 -->
+		  <table class="table table-hover">
+		  	<thead>
+		  	  <tr class="active">
+		  	  	<th>ID</th>
+		        <th>名前</th>
+		        <th>ユーザーネーム</th>
+		        <th>メールアドレス</th>
+		        <th>ステータス</th>
+		        <th></th>
+		        <th></th>
+	          </tr>
+	        </thead>
+	        <tbody>
+              <% @users.each do |user| %>
+			    <tr>
+			      <td><%= user.id %></td>
+			      <td><%= user.name %></td>
+			      <td><%= user.username %></td>
+			      <td><%= user.email %></td>
+			      <% if user.is_status == false %>
+                    <td><span class="badge" style="background:#8bce9a;">有効会員</span></td>
+                  <% else %>
+                    <td><span class="badge" style="background:#d72238;">退会済み</span></td>
+                  <% end %>
+		          <td><%= link_to "詳細", admins_user_path(user.id) ,class: "btn btn-primary" %></td>
+		          <td><%= link_to "編集", edit_admins_user_path(user.id) ,class: "btn btn-success" %></td>
+		        </tr>
+			  <% end %>
+		    </table>
+	</div>
+  </div>
+</div>

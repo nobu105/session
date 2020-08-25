@@ -1,3 +1,5 @@
 class Item < ApplicationRecord
-	belong_to :user
+	mount_uploader :file, AudioFileUploader
+	
+	belongs_to :user
 end

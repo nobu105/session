@@ -15,10 +15,11 @@ resources :users, only: [:show, :edit, :update]
   patch 'users/:id/unsubscribe' => 'users#unsubscribe_done', as: 'user_unsubscribe_done'
   put '/users/:id/unsubscribe' => 'users#unsubscribe_done', as: 'users_unsubscribe_done'
 
-resources :items, only: [:new, :create, :index, :show] do
-  resources :likes, only: [:create, :destroy]
-  resources :comments, only: [:create, :destroy]
+resources :items do
+    resource :favorites, only: [:create, :destroy]
+    resources :book_comments, only: [:create, :destroy]
   end
+
 
 # 管理者用サイトのrouting
 devise_scope :admins do
