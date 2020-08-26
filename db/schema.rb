@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_21_152023) do
+ActiveRecord::Schema.define(version: 2020_08_23_120352) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email"
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 2020_08_21_152023) do
     t.string "file"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "audio"
   end
 
   create_table "likes", force: :cascade do |t|
@@ -49,13 +50,20 @@ ActiveRecord::Schema.define(version: 2020_08_21_152023) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "email", default: "", null: false
+    t.string "email"
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.boolean "is_status"
+    t.string "name"
+    t.string "username"
+    t.string "image_id"
+    t.string "uid"
+    t.string "provider"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "audio"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

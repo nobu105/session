@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-10">
+      <h2><i class="far fa-id-card"></i> 会員情報詳細</h2>
+
+      <!-- 会員情報 -->
+      <table class="table table-border">
+        <tr>
+          <th>会員ID</th>
+          <td>
+            <%= @user.id %>
+            <% if @user.is_status? %>
+              <span class="badge" style="background:#d72238;">退会済み</span>
+            <% else %>
+              <span class="badge" style="background:#8bce9a;">有効会員</span>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <th>名前</th>
+          <td><%= @user.name %></td>
+        </tr>
+        <tr>
+          <th>ユーザーネーム</th>
+          <td><%= @user.username %></td>
+        </tr>
+        <tr>
+          <th>メールアドレス</th>
+          <td><%= @user.email %></td>
+        </tr>
+        <tr>
+          <th></th>
+          <td><%= link_to "編集する", edit_admins_user_path(@user.id) ,class: "btn btn-success" %> <%= link_to "会員一覧にもどる", admins_users_path ,class: "btn btn-danger" %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
