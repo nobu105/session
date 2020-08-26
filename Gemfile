@@ -95,3 +95,7 @@ gem 'enum_help'
 #view調整
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'jquery-rails'
+
+#s3
+gem "fog-aws"
+

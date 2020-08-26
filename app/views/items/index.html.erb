@@ -1,14 +1,77 @@
-<table>
-  <tr>
-    <th>タイトル</th>
-    <th>コメント</th>
-    <th></th>
-  </tr>
-  <% @items.each do |item|%>
-  <tr>
-    <td><%= item.title %></td>
-    <td><%= item.text %></td>
-    
-  </tr>
-  <% end %>
-</table>
+<div class="container">
+  <div class="row">
+  	<%= render 'items/sidebar' %>
+
+  	<div class="col-lg-1">
+  	</div>
+
+  	<div class="col-lg-5">
+  	  <% @items.each do |item|%>
+  	    <div class="post-panel well well-sm">
+  	      <div class="item-image">
+  	      	<div class="row">
+  	      	  <span class="col-xs-3">
+  	            <%= link_to user_path(item.user.id) do %>
+                <%= attachment_image_tag item.user, :image, :fill, 40, 40, format: 'jpg',fallback: "no_image.jpg" ,size:'50x50'%>
+                <% end %>
+              </span>
+              <span class="col-xs-8">
+                <h5><%= current_user.username %></h5>
+              </span>
+            </div>
+          </div>
+          <div class="item-title">
+          	<div class="row">
+  	      	  <span class="col-xs-3">
+  	      	  </span>
+  	      	  <span class="col-xs-6">
+                <%= link_to item.title, item_path(item) %><br>
+              </span>
+            </div>
+          </div><br>
+          <div class="item-text">
+          	<div class="row">
+  	      	  <span class="col-xs-3">
+  	      	  </span>
+  	      	  <span class="col-xs-9">
+                <%= item.text %><br>
+              </span>
+            </div>
+          </div><br>
+          <div class="item-link">
+          	<div class="row">
+          	  <span class="col-xs-3">
+  	      	  </span>
+  	      	  <span class="col-xs-2">
+  	      	  	<i class="far fa-comments"></i> <%= item.comments.count %>
+  	      	  </span>
+  	      	  <span class="col-xs-2">
+                <% if item.liked_by?(current_user) %>
+                <%= link_to item_likes_path(item), method: :delete do %>
+                  <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+                  <%= item.likes.count %>
+                <% end %>
+              <% else %>
+                <%= link_to item_likes_path(item), method: :post do %>
+                  <i class="far fa-heart" aria-hidden="true"></i>
+                  <%= item.likes.count %>
+                <% end %>
+              <% end %>
+              </span>
+              <span class="col-xs-2">
+                <%= link_to download_item_path(item), "data-confirm" => "音源をダウンロードしますか？" do %>
+                  <i class="fas fa-arrow-alt-circle-down"></i>
+                <% end %>
+              </span>
+              <span class="col-xs-2">
+                <%= link_to item_path(item), method: :delete, "data-confirm" => "本当に削除しますか？" do %>
+                  <i class="fas fa-trash-alt"></i>
+                <% end %>
+              </span>
+            </div>
+          </div>
+  	  	</div>
+  	  <% end %>
+    </div>
+  </div>
+</div>
