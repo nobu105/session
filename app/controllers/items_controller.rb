@@ -6,6 +6,7 @@ class ItemsController < ApplicationController
   def index
     @items = Item.all
     @item = Item.new
+    @search_items = Item.all.page(params[:page]).search(params[:search])
   end
 
   def create
@@ -30,6 +31,7 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @newitem = Item.new
     @comment = Comment.new
+    @search_items = Item.all.page(params[:page]).search(params[:search])
   end
 
   def edit
@@ -40,11 +42,11 @@ class ItemsController < ApplicationController
     @item.destroy
     redirect_to item_path
   end
-  
+
   private
 
   def item_params
-    params.require(:item).permit(:id,:user_id,:title,:text,:file,:audio)
+    params.require(:item).permit(:id,:user_id,:title,:text,:file,:audio,:serch)
   end
 end
 

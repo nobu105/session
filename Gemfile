@@ -99,3 +99,6 @@ gem 'jquery-rails'
 #s3
 gem "fog-aws"
 
+#環境変数
+gem 'dotenv-rails'
+

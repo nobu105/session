@@ -1,5 +1,5 @@
-<div class="col-lg-3 container sidebar well well-sm">
-  <div class="sidebar-content">
+<div class="container col-lg-4">
+  <div class="sidebar-content well">
     <div class="row">
       <span class="col-xs-4">
   	    <%= attachment_image_tag current_user, :image, :fill, 40, 40, format: 'jpg',fallback: "no_image.jpg" ,size:'50x50'%>
@@ -38,5 +38,35 @@
       </div>
     <% end %>
     </div>
+  </div>
+  <div class="sidebar-nav">
+    <ul class="nav nav-pills nav-stacked">
+      <% if admin_signed_in? %>
+        <li class="nav-item"><%= link_to 'ホーム', admins_top_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item"><%= link_to '会員一覧', admins_users_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item"><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: 'nav-link' %></li>
+      <!-- ユーザー -->
+      <% elsif user_signed_in? %>
+        <p class="text-center">
+          <li class="nav-item"><%= link_to 'ホーム', items_path, class: 'nav-link' %>
+          </li>
+          <li class="nav-item"><%= link_to 'About', user_about_path, class: 'nav-link' %>
+          </li>
+          <li class="nav-item"><%= link_to 'マイページ', user_path(current_user.id), class: 'nav-link' %>
+          </li>
+          <li class="nav-item"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link' %>
+          </li>
+        <!-- 非ログイン -->
+      <% else %>
+        <li class="nav-item"><%= link_to 'About', user_about_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item" ><%= link_to '新規登録', new_user_registration_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item"><%= link_to 'ログイン', new_user_session_path, class: 'nav-link' %>
+        </li>
+      <% end %>
+    </ul>
   </div>
 </div>
