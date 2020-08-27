@@ -16,6 +16,7 @@ resources :users, only: [:show, :edit, :update]
   put '/users/:id/unsubscribe' => 'users#unsubscribe_done', as: 'users_unsubscribe_done'
 
 resources :items do
+  get 'search' => 'searches#search', as: 'search'
     member do
       get :download
     end
