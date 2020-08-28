@@ -101,4 +101,6 @@ gem "fog-aws"
 
 #環境変数
 gem 'dotenv-rails'
-
+group :production do
+  gem 'mysql2'
+end
