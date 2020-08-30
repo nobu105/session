@@ -86,7 +86,7 @@ gem 'omniauth-facebook'
 
 #音声アップロード
 gem 'carrierwave'
-gem 'carrierwave-audio', git: 'git@github.com:tanakaworld/carrierwave-audio.git'
+#gem 'carrierwave-audio', git: 'git@github.com:tanakaworld/carrierwave-audio.git'
 
 #enum日本語化（一応）
 gem 'enum_help'
