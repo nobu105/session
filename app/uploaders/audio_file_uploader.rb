@@ -37,8 +37,8 @@ class AudioFileUploader < CarrierWave::Uploader::Base
   def extension_whitelist
     %w(jpg jpeg gif png mp3 wav)
   end
-  
-  include CarrierWave::Audio
+
+  #include CarrierWave::Audio
 
   version :wav do
    process :convert => [{output_format: :wav}]
