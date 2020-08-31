@@ -38,7 +38,7 @@ class AudioFileUploader < CarrierWave::Uploader::Base
     %w(jpg jpeg gif png mp3 wav)
   end
 
-  #include CarrierWave::Audio
+  include CarrierWave::Audio
 
   version :wav do
    process :convert => [{output_format: :wav}]
