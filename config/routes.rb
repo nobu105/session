@@ -6,7 +6,8 @@ root 'homes#top'
 devise_for :users, controllers: {
   registrations: 'users/registrations',
   passwords: 'users/passwords',
-  sessions: 'users/sessions'}
+  sessions: 'users/sessions',
+  omniauth_callbacks: 'users/omniauth_callbacks'}
 
 get 'homes/top' => 'homes#top', as: 'user_top'
 get 'homes/about' => 'homes#about', as: 'user_about'
@@ -22,7 +23,11 @@ resources :items do
     end
     resource :likes, only: [:create, :destroy]
     resources :comments, only: [:create, :destroy]
-  end
+end
+
+get  'contacts/index' =>'contacts#index'
+post 'contacts/confirm' => 'contacts#confirm'
+post 'contacts/done' => 'contacts#done'
 
 
 # 管理者用サイトのrouting

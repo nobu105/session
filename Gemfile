@@ -83,6 +83,7 @@ gem 'pry-byebug'
 #SNS認証
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'omniauth-twitter'
 
 #音声アップロード
 gem 'carrierwave'
@@ -105,3 +106,5 @@ group :production do
 end
 
 gem 'pry-rails'
+
+gem 'mailcatcher'
