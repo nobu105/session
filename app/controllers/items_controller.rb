@@ -60,7 +60,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:id,:user_id,:title,:text,:file,:audio,:serch)
+    params.require(:item).permit(:id,:user_id,:title,:text,:file,:audio,:serch, { :tag_ids=> [] })
   end
 end
 

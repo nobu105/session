@@ -6,6 +6,13 @@
     <%= f.text_field :text , class:"form-control" %>
     <%= f.label :ファイル %>
     <%= f.file_field :file , class:"form-control" %>
+    <%= f.label :タグ %>
+    <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+      <%= tag.label do %>
+        <%= tag.check_box %>
+        <%= tag.text %>
+      <% end %>
+    <% end %>
   </div>
   <div>
     <%= f.submit "投稿" %>

@@ -4,16 +4,18 @@ class Item < ApplicationRecord
 	belongs_to :user
 	has_many :likes, dependent: :destroy
 	has_many :comments, dependent: :destroy
+  has_many :item_tags, dependent: :destroy
+  has_many :tags, through: :item_tags
 
 	def liked_by?(user)
-      likes.where(user_id: user.id).exists?
-    end
+    likes.where(user_id: user.id).exists?
+  end
 
-    def self.search(search)
-      if search
-        Item.where(['title LIKE ? OR text LIKE ?', "%#{search}%", "%#{search}%"])
-      else
-        Item.all
-      end
+  def self.search(search)
+    if search
+      Item.where(['title LIKE ? OR text LIKE ?', "%#{search}%", "%#{search}%"])
+    else
+      Item.all
     end
+  end
 end

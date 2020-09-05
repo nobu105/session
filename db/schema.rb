@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_23_120352) do
+ActiveRecord::Schema.define(version: 2020_09_01_073931) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email"
@@ -32,6 +32,15 @@ ActiveRecord::Schema.define(version: 2020_08_23_120352) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "item_tags", force: :cascade do |t|
+    t.integer "item_id"
+    t.integer "tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_item_tags_on_item_id"
+    t.index ["tag_id"], name: "index_item_tags_on_tag_id"
+  end
+
   create_table "items", force: :cascade do |t|
     t.integer "user_id"
     t.string "title"
@@ -45,6 +54,14 @@ ActiveRecord::Schema.define(version: 2020_08_23_120352) do
   create_table "likes", force: :cascade do |t|
     t.integer "user_id"
     t.integer "item_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
+    t.integer "mode"
+    t.string "text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
