@@ -1,3 +1,4 @@
+<%= render 'layouts/logo' %>
 <div class="container">
   <div class="row">
   	<%= render 'items/sidebar' %>
@@ -13,7 +14,7 @@
                 <% end %>
               </span>
               <span class="col-xs-8">
-                <h5><%= current_user.username %></h5>
+                <h5><%= item.user.username %></h5>
               </span>
             </div>
           </div>

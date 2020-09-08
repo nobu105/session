@@ -1,2 +1,55 @@
-<h1>Homes#about</h1>
-<p>Find me in app/views/homes/about.html.erb</p>
+<%= render 'layouts/header' %>
+<div class="about">
+  <div class="container">
+    <div class="row">
+  	  <div class="col-sm-2">
+  	  </div>
+  	  <div class="col-sm-8">
+  	    <h1 class="title-about">What about <span class="brand" style="font-size:2em;">session</span> ?</h1><br>
+  	  </div>
+  	</div>
+  	<div class="row">
+  	  <img src="/assets/band.png" alt="" class="left1">
+      <div class="txtBox inview fadeIn_left">
+        <div class="left-text">
+          <span style="font-size:2em;">
+            仲間と集まって合奏ができない？<br>
+          </span><br>
+            sessionなら投稿機能により<br>離れていても合奏ができます
+  　　　 </div>
+      </div>
+    </div>
+    <div class="row">
+      <img src="/assets/back.png" alt="" class="right1">
+      <div class="txtBox inview fadeIn_right">
+      	<div class="right-text">
+      	  <span style="font-size:2em;">
+            伴奏者が欲しい？<br>
+          </span><br>
+            sessionなら優秀な伴奏者が<br>きっと見つかります
+        </div>
+      </div>
+    </div>
+    <div class="row">
+  	  <img src="/assets/search.png" alt="" class="left2">
+      <div class="txtBox inview fadeIn_left_2">
+        <div class="left-text">
+          <span style="font-size:2em;">
+            どんな曲を演奏したいかわからない？<br>
+          </span><br>
+            sessionなら検索・タグ機能で<br>好みの曲を探せます
+  　　　 </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-3">
+      </div>
+    <% if user_signed_in? %>
+    <% else %>
+      <div class="col-sm-8">
+        <h1 class="taiken">今すぐ体験！</h1>
+      	<%= link_to '新規登録', new_user_registration_path, class: 'btn3' %>
+      </div>
+    <% end %>
+  </div>
+</div>

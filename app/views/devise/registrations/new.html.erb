@@ -1,39 +1,50 @@
-<h2>ユーザー登録</h2>
+<%= render 'layouts/header' %>
+<div class="wrap-video">
+  <video src="/videos/top.mp4" autoplay muted loop playsinline>
+  </video>
+</div>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+<div class="container">
+  <div class="row">
+    <div class="signup-box">
+      <span class="form-text">
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+          <div class="col-sm-10">
+            <%= f.label :名前 %><br />
+            <%= f.text_field :name, autofocus: true, autocomplete: "名前", class: 'form-control' %>
+          </div>
 
-  <div class="field">
-    <%= f.label :名前 %><br />
-    <%= f.text_field :name, autofocus: true, autocomplete: "名前" %>
+          <div class="col-sm-10">
+            <%= f.label :ユーザーネーム（公開用） %><br />
+            <%= f.email_field :username, autofocus: true, autocomplete: "ユーザーネーム", class: 'form-control' %>
+   　　　　</div>
+
+    　    <div class="col-sm-10">
+            <%= f.label :メールアドレス %><br />
+            <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control' %><br>
+          </div>
+
+          <div class="col-sm-10">
+            <%= f.label :パスワード %>
+            <% if @minimum_password_length %>（<%= @minimum_password_length %>文字以上）</em>
+            <% end %><br />
+            <%= f.password_field :password, autofocus: true, autocomplete: "new-password", class: 'form-control' %>
+          </div>
+
+          <div class="col-sm-10">
+            <%= f.label :パスワード（確認） %><br />
+            <%= f.password_field :password_confirmation, autofocus: true, autocomplete: "new-password", class: 'form-control' %>
+          </div>
+
+          <div class="col-sm-10"><br>
+            <%= f.submit "登録", class: "btn btn-success btn-block mt-5" %><br>
+          </div>
+        <% end %>
+        <div class="col-sm-10">
+          <%= render "devise/shared/links" %>
+        </div>
+      </span>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :ユーザーネーム %><br />
-    <%= f.email_field :username, autofocus: true, autocomplete: "ユーザーネーム" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :メールアドレス %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "メールアドレス" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :パスワード %>
-    <% if @minimum_password_length %>
-    （<%= @minimum_password_length %>文字以上）</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :パスワード（確認） %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "登録" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>

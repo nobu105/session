@@ -1,16 +1,44 @@
 <header class="container-fluid">
-  <nav class="navbar navbar-expand-lg">
+  <nav class="navbar navbar-expand-sm bg-light">
     <!-- ロゴ画像 -->
-	  <div>
-      <%= link_to user_top_path, style: 'color: #fcbf1e' do %>
-        <h1>LOGO</h1>
-      <% end %>
-    </div>
+      <a class="navbar-brand" href="/">session</a>
+    <ul class="nav navbar-nav navbar-right">
+
     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarEexample2">
       <span class="sr-only">Toggle navigation</span>
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
+
+    <!-- 各種リンク。管理者ログイン時と顧客ログイン時、非ログイン時で表示切替。 -->
+      <!-- 管理者 -->
+          <% if admin_signed_in? %>
+        <li class="nav-item"><%= link_to 'ホーム', admins_top_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item"><%= link_to '会員一覧', admins_users_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item"><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: 'nav-link' %></li>
+      <!-- ユーザー -->
+      <% elsif user_signed_in? %>
+        <p class="text-center">
+          <li class="nav-item"><%= link_to 'ホーム', items_path, class: 'nav-link' %>
+          </li>
+          <li class="nav-item"><%= link_to 'About', '#about' %>
+          </li>
+          <li class="nav-item"><%= link_to 'マイページ', user_path(current_user.id), class: 'nav-link' %>
+          </li>
+          <li class="nav-item"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link' %>
+          </li>
+        <!-- 非ログイン -->
+      <% else %>
+        <li class="nav-item"><%= link_to 'About', user_about_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item" ><%= link_to '新規登録', new_user_registration_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item"><%= link_to 'ログイン', new_user_session_path, class: 'nav-link' %>
+        </li>
+      <% end %>
+      </ul>
   </nav>
 </header>
