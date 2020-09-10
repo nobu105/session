@@ -1,2 +1,21 @@
-<h1>Homes#top</h1>
-<p>Find me in app/views/homes/top.html.erb</p>
+<%= render 'layouts/header' %>
+<div class="wrap-video">
+  <div class="text">
+    <p>さあ、合奏しよう</p><br>
+    <p class="headline">sessionは自分の演奏を投稿して<br>合奏の楽しさをもっと手軽に体験できる、音楽で繋がるSNSです</p>
+  </div>
+  <video src="/videos/top.mp4" autoplay muted loop playsinline>
+  </video>
+</div>
+<div class="headbutton">
+  <div class="row">
+    <span class=col-sm-4>
+    </span>
+    <span class=col-sm-4>
+        <%= link_to 'ログイン', new_user_session_path, class: 'btn1' %>
+        <%= link_to '新規登録', new_user_registration_path, class: 'btn2' %>
+    </span>
+  </div>
+</div>
+
+<%= render 'homes/about' %>

@@ -1,6 +1,158 @@
 // Place all the styles related to the items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
 .item-title {
 	font-size: 18px;
 }
+
+.sidebar {
+	 position: fixed;
+	 width: 1150px;
+}
+
+.side-btn {
+    z-index: 2; /*必ず必要*/
+	display: block;
+	width: 250px;
+	padding: 0.8em;
+	margin-top: 30px;
+	margin-left: 14%;
+	text-align: center;
+	text-decoration: none;
+	color: #fff;
+	font-size: 15px;
+	border: 2px solid #FF9933;
+    background-color: #FF9933;
+	border-radius: 50px;
+}
+
+.side-btn:hover {
+	background: #FF6600;
+	border-color: #FF6600;
+	color: #fff;
+	text-decoration: none;
+}
+
+.side-name {
+	font-size: 20px;
+}
+
+.nav-links {
+	font-size: 30px;
+	margin-top: 20px;
+	margin-left: 10%;
+	text-decoration: none;
+	color: #000;
+}
+
+.nav-links:hover {
+	background-color: #FFDEAD !important;
+	border: 2px solid #FFDEAD;
+	border-radius: 50px;
+	color: #FF6600;
+	text-decoration: none;
+}
+
+.search {
+    position: fixed;
+    width :20%;
+    min-height: 80vh;
+	background-color: #FF9933;
+	border-radius: 5px;
+}
+
+.search-form {
+    position: sticky;
+	margin-top: 10%;
+	margin-left: 7%;
+}
+
+
+.item-panel {
+	border: 2px solid #FFDEAD;
+	margin-bottom: 2%;
+	padding-bottom: 2%;
+}
+
+.item-panel:hover {
+	box-shadow: 2px 5px 15px 0 rgba(0, 0, 0, .3);
+}
+
+.item-panel-show {
+	border: 2px solid #FFDEAD;
+	margin-bottom: 2%;
+	padding-bottom: 4%;
+}
+
+.item-name {
+	font-size: 20px;
+}
+
+.item-image {
+	margin-top: 3%;
+	margin-left: 3%;
+}
+
+.f-btn {
+	display: block;
+	width: 200px;
+	padding: 0.8em;
+	margin-top: 30px;
+	margin-left: 30%;
+	text-align: center;
+	text-decoration: none;
+	color: #000;
+	font-size: 15px;
+	border: 2px solid #FFCC33;
+    background-color: #FFCC33;
+	box-shadow: 2px 5px 15px 0 rgba(0, 0, 0, .3);
+}
+
+.f-btn:hover {
+	background: #FF6600;
+	border-color: #FF6600;
+	color: #fff;
+	text-decoration: none;
+	box-shadow: none;
+}
+
+.c-btn {
+	display: block;
+	width: 150px;
+	padding: 0.8em;
+	margin-top: -3%;
+	margin-left: 65%;
+	text-align: center;
+	text-decoration: none;
+	color: #000;
+	font-size: 15px;
+	border: 2px solid #FFCC33;
+    background-color: #FFCC33;
+}
+
+.c-btn:hover {
+	background: #FF6600;
+	border-color: #FF6600;
+	color: #fff;
+	text-decoration: none;
+}
+
+.comment {
+	width: 100%;
+	padding-top: 2%;
+	border: 2px solid #DDDDDD;
+}
+
+.item-new {
+	border: 2px solid #FFDEAD;
+	margin-bottom: 2%;
+	padding-bottom: 2%;
+	text-align: center;
+}
+
+
+.audiojs {
+    margin-top: -9px;
+}
+

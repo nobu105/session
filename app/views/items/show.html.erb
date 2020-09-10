@@ -1,86 +1,19 @@
+<%= render 'layouts/logo' %>
 <div class="container">
   <div class="row">
-    <div class="container col-lg-4">
-      <div class="sidebar-content well">
-        <div class="row">
-          <span class="col-xs-4">
-            <%= attachment_image_tag current_user, :image, :fill, 40, 40, format: 'jpg',fallback: "no_image.jpg" ,size:'50x50'%>
-          </span>
-          <span class="col-xs-8">
-            <%= link_to "プロフィール編集", edit_user_path(current_user) %>
-           </span>
-        </div>
-        <%= current_user.username %><br>
-        <div class="row">
-          <span class="col-xs-4">
-            投稿数<br>
-            <%= current_user.items.count %>
-          </span>
-          <span class="col-xs-4">
-            フォロー<br>
-            <%=  %>
-          </span>
-          <span class="col-xs-4">
-            フォロワー<br>
-            <%=  %>
-          </span>
-        </div>
-        <div class="row">
-        <%= form_for(@newitem) do |f|%>
-          <div class="form-group">
-            <%= f.label :タイトル %>
-            <%= f.text_field :title , class:"form-control" %>
-            <%= f.label :コメント %>
-            <%= f.text_field :text , class:"form-control" %>
-            <%= f.label :ファイル %>
-            <%= f.file_field :file , class:"form-control" %>
-          </div>
-          <div>
-            <%= f.submit "投稿" %>
-          </div>
-        <% end %>
-        </div>
-      </div>
-      <div class="sidebar-nav">
-        <ul class="nav nav-pills nav-stacked">
-          <% if admin_signed_in? %>
-            <li class="nav-item"><%= link_to 'ホーム', admins_top_path, class: 'nav-link' %>
-            </li>
-            <li class="nav-item"><%= link_to '会員一覧', admins_users_path, class: 'nav-link' %>
-            </li>
-            <li class="nav-item"><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: 'nav-link' %></li>
-          <!-- ユーザー -->
-          <% elsif user_signed_in? %>
-            <p class="text-center">
-              <li class="nav-item"><%= link_to 'ホーム', items_path, class: 'nav-link' %>
-              </li>
-              <li class="nav-item"><%= link_to 'About', user_about_path, class: 'nav-link' %>
-              </li>
-              <li class="nav-item"><%= link_to 'マイページ', user_path(current_user.id), class: 'nav-link' %>
-              </li>
-              <li class="nav-item"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link' %>
-              </li>
-          <!-- 非ログイン -->
-          <% else %>
-            <li class="nav-item"><%= link_to 'About', user_about_path, class: 'nav-link' %>
-            </li>
-            <li class="nav-item" ><%= link_to '新規登録', new_user_registration_path, class: 'nav-link' %>
-            </li>
-            <li class="nav-item"><%= link_to 'ログイン', new_user_session_path, class: 'nav-link' %>
-            </li>
-          <% end %>
-        </ul>
-      </div>
-    </div>
+    <%= render 'items/sidebar' %>
+    <div class="main">
   	<div class="col-lg-5">
-  	  <div class="post-panel well well-sm">
+  	  <div class="item-panel-show">
   	    <div class="item-image">
   	      <div class="row">
   	        <span class="col-xs-3">
-              <%= attachment_image_tag @item.user, :image, :fill, 40, 40, format: 'jpg',fallback: "no_image.jpg" ,size:'50x50'%>
+              <%= link_to user_path(@item.user.id) do %>
+              <%= attachment_image_tag @item.user, :image, :fill, 80, 80, format: 'jpg',fallback: "no_image.jpg" ,size:'80x80'%>
+              <% end %>
             </span>
             <span class="col-xs-8">
-              <h5><%= current_user.username %></h5>
+              <h5 class="item-name"><%= @item.user.username %></h5>
             </span>
           </div>
         </div>
@@ -107,7 +40,7 @@
           	<span class="col-xs-3">
   	      	</span>
   	      	<span class="col-xs-8">
-  	      	  <%= @item.created_at %><br><br />
+  	      	  <%= @item.created_at.strftime("%Y-%m-%d %H:%M") %><br><br />
   	      	</span>
   	      </div>
   	      <div class="row">
@@ -134,22 +67,41 @@
             </span>
             <span class="col-xs-9">
               <% @item.tags.each do |tag| %>
-                <%= tag.name %>
+                <span class="badge badge-primary">
+                  <%= tag.name %>
+                </span>
               <% end %>
             </span>
-            </div>
+          </div>
         </div>
-  	  </div>
-  	  <div class="row">
+      </div>
+      
+      <div class="audio">
+        <div class="row">
+          <span class="col-xs-3">
+            <%= audio_tag(@item.file) %>
+          </span>
+        </div>
+      </div><br><br>
+
+  	  <div class="comment-submit">
+      <%= form_for [@item, @comment] do |f| %>
+		    <%= f.text_area :comment, rows:'5', class: "form-control",placeholder: "コメント" %><br>
+	      <%= f.submit "コメントを送信", class: "c-btn" %><br><br>
+	    <% end %>
+	    </div>
+
+      <div class="row">
         <% @item.comments.each do |comment| %>
+        <div class="comment">
           <div class="comment-image">
             <span class="col-xs-3">
               <%= link_to user_path(comment.user) do %>
                 <%= attachment_image_tag comment.user, :image, :fill, 40, 40, format: 'jpg',fallback: "no_image.jpg" ,size:'50x50'%>
               <% end %>
-  	        </span>
-  	        <span class="col-xs-8">
-  	          <h5><%= comment.user.username %></h5>
+            </span>
+            <span class="col-xs-8">
+              <h5><%= comment.user.username %></h5>
             </span>
           </div>
           <div class="comment-text">
@@ -157,33 +109,36 @@
               <span class="col-xs-3">
               </span>
               <span class="col-xs-6">
-          	    <%= comment.comment %>
-          	  </span>
-          	</div>
+                <%= comment.comment %>
+              </span>
+            </div>
           </div><br>
           <div class="comment-delete">
-          	<div class="row">
-          	  <span class="col-xs-9">
-          	  </span>
-          	  <span class="col-xs-3">
+            <div class="row">
+              <span class="col-xs-9">
+              </span>
+              <span class="col-xs-3">
                 <% if comment.user_id == current_user.id %>
                   <%= link_to "編集", edit_item_path(@item,comment.id) %>
-			            <%= link_to "削除", item_comment_path(@item,comment.id), method: :delete %>
+                  <%= link_to "削除", item_comment_path(@item,comment.id), method: :delete %>
                 <% end %>
               </span>
             </div>
           </div>
+        </div>
         <% end %>
       </div>
-  	  <div class="comment-submit">
-      <%= form_for [@item, @comment] do |f| %>
-		    <%= f.text_area :comment, rows:'5', class: "form-control",placeholder: "コメントをここに" %><br>
-	      <%= f.submit "送信する" %>
-	    <% end %>
-	    </div>
     </div>
-    <%= render 'items/serch' %>
+    </div>
+    <%= render 'items/search' %>
   </div>
 </div>
 
+
+
+<script>
+  audiojs.events.ready(function() {
+    var as = audiojs.createAll();
+  });
+</script>
 

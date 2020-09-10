@@ -7,6 +7,8 @@ class Item < ApplicationRecord
   has_many :item_tags, dependent: :destroy
   has_many :tags, through: :item_tags
 
+  validates :title, presence: true
+
 	def liked_by?(user)
     likes.where(user_id: user.id).exists?
   end

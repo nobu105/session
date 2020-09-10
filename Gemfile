@@ -108,3 +108,5 @@ end
 gem 'pry-rails'
 
 gem 'mailcatcher'
+
+gem 'audiojs-rails'
