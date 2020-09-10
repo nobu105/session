@@ -82,6 +82,8 @@
 }
 .about {
 	font-family: "bananaslipplus";
+    margin-top:-100px;
+    padding-top:100px;
 }
 
 .left1 {
@@ -116,4 +118,49 @@
 	height: 500px;
 	margin-top: 12%;
 	margin-left: 45%;
+}
+
+.fadeIn_left {
+  opacity: 0;
+  transform: translate(-50%, 0);
+  transition: 2s;
+  font-size: 40px;
+  width: 100%;
+  height: 400px;
+  margin-top: 12%;
+  background-color: #FF0033;
+}
+.fadeIn_left.is-show {
+  transform: translate(0, 0);
+  opacity: 1;
+}
+
+.fadeIn_right {
+  opacity: 0;
+  transform: translate(50%, 0);
+  transition: 2s;
+  font-size: 40px;
+  width: 100%;
+  height: 400px;
+  background-color: #FF773E;
+  margin-top: 12%;
+}
+.fadeIn_right.is-show {
+  transform: translate(0, 0);
+  opacity: 1;
+}
+
+.fadeIn_left_2 {
+  opacity: 0;
+  transform: translate(-50%, 0);
+  transition: 2s;
+  font-size: 40px;
+  width: 100%;
+  height: 400px;
+  margin-top: 12%;
+  background-color: #33CCFF;
+}
+.fadeIn_left_2.is-show {
+  transform: translate(0, 0);
+  opacity: 1;
 }

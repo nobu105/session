@@ -1,21 +1,31 @@
 <%= render 'layouts/logo' %>
-<%= form_for(@item) do |f|%>
-  <div class="form-group">
-  	<%= f.label :タイトル %>
-    <%= f.text_field :title , class:"form-control" %>
-    <%= f.label :コメント %>
-    <%= f.text_field :text , class:"form-control" %>
-    <%= f.label :ファイル %>
-    <%= f.file_field :file , class:"form-control" %>
-    <%= f.label :タグ %>
-    <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
-      <%= tag.label do %>
-        <%= tag.check_box %>
-        <%= tag.text %>
-      <% end %>
-    <% end %>
+<div class="container">
+  <div class="row">
+    <%= render 'items/sidebar' %>
+    <div class="main">
+      <div class="col-lg-5">
+        <%= form_for(@item) do |f|%>
+          <div class="form-group">
+	          <%= f.label :タイトル %>
+            <%= f.text_field :title , class:"form-control" %><br>
+            <%= f.label :コメント %>
+            <%= f.text_field :text , class:"form-control" %><br>
+            <%= f.label :ファイル（wavファイルのみ対応） %>
+            <%= f.file_field :file %><br>
+            <%= f.label :タグ %><br>
+            <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+              <%= tag.label do %>
+                <%= tag.check_box %>
+                <%= tag.text %>
+              <% end %>
+            <% end %>
+          </div>
+          <div>
+            <%= f.submit "投稿", class: "f-btn" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <%= render 'items/search' %>
   </div>
-  <div>
-    <%= f.submit "投稿" %>
-  </div>
-<% end %>
+</div>

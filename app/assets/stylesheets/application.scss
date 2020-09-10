@@ -20,6 +20,26 @@
 	font-family: "bananaslipplus";
 	src: font-url("/assets/bananaslipplus.otf");
 }
+@font-face {
+	font-family: "Makinas-4-Flat";
+	src: font-url("/assets/Makinas-4-Flat.otf");
+}
+
+body {
+	font-family: "Makinas-4-Flat";
+}
+
+header {
+	position: sticky;
+	top: 0;
+	background-color: white;
+	z-index: 999;
+}
+
+.main {
+	margin-left:33%;
+	width: 100%;
+}
 
 .wrap-video{
   position: absolute;
@@ -89,47 +109,25 @@
 	font-family: "bananaslipplus";
 }
 
-.fadeIn_left {
-  opacity: 0;
-  transform: translate(-50%, 0);
-  transition: 2s;
-  font-size: 40px;
-  width: 100%;
-  height: 400px;
-  margin-top: 12%;
-  background-color: #FF0033;
-}
-.fadeIn_left.is-show {
-  transform: translate(0, 0);
-  opacity: 1;
-}
-
-.fadeIn_right {
-  opacity: 0;
-  transform: translate(50%, 0);
-  transition: 2s;
-  font-size: 40px;
-  width: 100%;
-  height: 400px;
-  background-color: #FF773E;
-  margin-top: 12%;
-}
-.fadeIn_right.is-show {
-  transform: translate(0, 0);
-  opacity: 1;
+.edit-btn {
+	display: block;
+	width: 120px;
+	padding: 0.8em;
+	margin-top: 20px;
+	margin-left: 25%;
+	text-align: center;
+	text-decoration: none;
+	color: #000;
+	font-size: 15px;
+	border: 2px solid #FFCC33;
+    background-color: #FFCC33;
+	box-shadow: 2px 5px 15px 0 rgba(0, 0, 0, .3);
 }
 
-.fadeIn_left_2 {
-  opacity: 0;
-  transform: translate(-50%, 0);
-  transition: 2s;
-  font-size: 40px;
-  width: 100%;
-  height: 400px;
-  margin-top: 12%;
-  background-color: #33CCFF;
-}
-.fadeIn_left_2.is-show {
-  transform: translate(0, 0);
-  opacity: 1;
+.edit-btn:hover {
+	background: #FF6600;
+	border-color: #FF6600;
+	color: #fff;
+	text-decoration: none;
+	box-shadow: none;
 }

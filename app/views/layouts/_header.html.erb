@@ -30,6 +30,8 @@
           </li>
           <li class="nav-item"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link' %>
           </li>
+          <li class="nav-item"><%= link_to 'お問い合わせ', contacts_index_path,　class: 'nav-link' %>
+          </li>
         <!-- 非ログイン -->
       <% else %>
         <li class="nav-item"><%= link_to 'About', user_about_path, class: 'nav-link' %>
@@ -38,6 +40,8 @@
         </li>
         <li class="nav-item"><%= link_to 'ログイン', new_user_session_path, class: 'nav-link' %>
         </li>
+        <li class="nav-item"><%= link_to 'お問い合わせ', contacts_index_path,　class: 'nav-link' %>
+          </li>
       <% end %>
       </ul>
   </nav>

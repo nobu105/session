@@ -1,62 +1,62 @@
 <%= render 'layouts/logo' %>
 <div class='container'>
   <div class='row'>
-    <div class ="col-xs-10">
-      <h2>登録情報編集</h2>
+    <%= render 'items/sidebar' %>
+    <div class="main">
+      <div class="col-sm-7">
+        <h2>登録情報編集</h2><br><br>
+
+        <div class="row">
+          <%= form_for @user,url: {action: "update"} do |f| %>
+            <div class="col-sm-1"></div>
+            <div class="col-sm-4">
+              <%= attachment_image_tag @user, :image, size: "200x200",  fallback: "no_image.jpg"%><br>
+              <%= f.attachment_field :image %>
+            </div>
+
+            <div class="col-xs-1"></div>
+            <div class="col-xs-6">
+              <div class='form-group row'>
+                <div class='col-lg-5'>
+                  <h5><%= f.label :ユーザーネーム %></h5>
+                </div>
+                <div class='col-lg-7'>
+                  <span style='display: inline-block;'>
+                    <%= f.text_field :username, autofocus: true, autocomplete: 'username', class: 'form-control' %>
+                  </span>
+                </div>
+              </div>
+
+              <div class='form-group row'>
+                <div class='col-lg-5'>
+                  <h5><%= f.label :メールアドレス %></h5>
+                </div>
+                <div class='col-lg-7'>
+                  <span style='display: inline-block;'>
+                    <%= f.text_field :email, autofocus: true, autocomplete: 'email', class: 'form-control' %>
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="formgroup row">
+              <div class="col-lg-7"></div>
+              <div class="col-lg-3">
+                <%= f.submit '編集内容を保存する', class:'btn btn-success' %>
+              </div>
+              <div class="col-lg-2">
+                <%= link_to "パスワード変更", edit_user_registration_path, class: 'btn btn-warning' %>
+              </div>
+            </div><br><br>
+            <div class ="row">
+              <div class="col-lg-10"></div>
+              <div class="col-lg-1">
+                <%= link_to '退会する', user_unsubscribe_path, class:'btn btn-danger'  %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
-　
-    <div class="row">
-      <%= form_for @user,url: {action: "update"} do |f| %>
-        
-        <div class="col-xs-1"></div>
-
-        <div class="col-xs-4">
-          <%= attachment_image_tag @user, :image, size: "350x350",  fallback: "no_image.jpg"%><br>
-          <%= f.attachment_field :image %>
-        </div>
-        
-        <div class="col-xs-1"></div>
-
-        <div class="col-xs-6">
-          <div class='form-group row'>
-            <div class='col-lg-4'>
-              <h5><%= f.label :ユーザーネーム %></h5>
-            </div>
-            <div class='col-lg-8'>
-              <span style='display: inline-block;'>
-              ユーザーネーム<%= f.text_field :username, autofocus: true, autocomplete: 'username', class: 'form-control' %>
-              </span>
-            </div>
-          </div>
-    
-          <div class='form-group row'>
-            <div class='col-lg-4'>
-              <h5><%= f.label :メールアドレス %></h5>
-            </div>
-            <div class='col-lg-8'>
-              <span style='display: inline-block;'>
-              メールアドレス<%= f.text_field :email, autofocus: true, autocomplete: 'email', class: 'form-control' %>
-              </span>
-            </div>
-          </div>
-        </div>
-
-        <div class="formgroup row">
-          <div class="col-lg-7"></div>
-          <div class="col-lg-2">
-            <%= f.submit '編集内容を保存する', class:'btn btn-success' %>
-          </div>
-          <div class="col-lg-2">
-            <%= link_to "パスワード変更", edit_user_registration_path, class: 'btn btn-warning' %>
-          </div>
-        </div>
-        <div class ="row">
-          <div class="col-lg-11"></div>
-          <div class="col-lg-1">
-            <%= link_to '退会する', user_unsubscribe_path, class:'btn btn-danger'  %>
-          </div>
-        </div>
-      <% end %>
-    </div>
 </div>

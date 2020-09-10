@@ -16,6 +16,7 @@
 //= require turbolinks
 //= require_tree .
 //= require bootstrap-sprockets
+//= require audiojs
 
 $(document).on('turbolinks:load', function() {
   $(".inview").on("inview", function (event, isInView) {
@@ -34,17 +35,13 @@ $(document).on('turbolinks:load', function() {
     //リンク先を取得
     var target = $(href == "#" || href == "" ? 'html' : href);
     //リンク先までの距離を取得
-    var position = target.offset().top;
+    var header = $('header').height();
+    var position = target.offset().top - header;
     //スムーススクロール
     $("html, body").animate({scrollTop:position}, speed, "swing");
     return false;
   });
 });
-
-
-
-
-
 
 
 

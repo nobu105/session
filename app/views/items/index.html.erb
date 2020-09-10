@@ -2,19 +2,20 @@
 <div class="container">
   <div class="row">
   	<%= render 'items/sidebar' %>
+    <div class="main">
   	<div class="col-lg-5">
       <% if @search_items %>
   	  <% @search_items.each do |item|%>
-  	    <div class="post-panel well well-sm">
+  	    <div class="item-panel">
   	      <div class="item-image">
   	      	<div class="row">
   	      	  <span class="col-xs-3">
   	            <%= link_to user_path(item.user.id) do %>
-                <%= attachment_image_tag item.user, :image, :fill, 40, 40, format: 'jpg',fallback: "no_image.jpg" ,size:'50x50'%>
+                <%= attachment_image_tag item.user, :image, :fill, 80, 80, format: 'jpg',fallback: "no_image.jpg" ,size:'80x80'%>
                 <% end %>
               </span>
               <span class="col-xs-8">
-                <h5><%= item.user.username %></h5>
+                <h5 class="item-name"><%= item.user.username %></h5>
               </span>
             </div>
           </div>
@@ -64,7 +65,10 @@
               </span>
               <span class="col-xs-9">
                 <% item.tags.each do |tag| %>
-                  <%= tag.name %>
+                  <span class="badge badge-success">
+                    <%= tag.name %>
+                    <%= audio_tag(item.file) %>
+                  </span>
                 <% end %>
               </span>
             </div>
@@ -73,6 +77,7 @@
       <% end %>
   	  <% end %>
     </div>
-    <%= render 'items/serch' %>
+    <%= render 'items/search' %>
   </div>
 </div>
+
