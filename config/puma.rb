@@ -33,6 +33,9 @@ pidfile ENV.fetch("PIDFILE") { "tmp/pids/server.pid" }
 #
 # preload_app!
 
+worker_timeout 3600
+worker_boot_timeout 3600
+
 # Allow puma to be restarted by `rails restart` command.
 plugin :tmp_restart
 
@@ -51,3 +54,5 @@ if Rails.env.production?
   # デーモン
   daemonize
 end
+
+

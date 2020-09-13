@@ -1,7 +1,6 @@
 <%= render 'layouts/header' %>
 <div class="wrap-video">
-  <video src="/videos/top.mp4" autoplay muted loop playsinline>
-  </video>
+  <%= video_tag "top.mp4", autoplay: true, muted: true, loop:true, playsinline: true %>
 </div>
 
 <div class="container">

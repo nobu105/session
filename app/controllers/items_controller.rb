@@ -1,4 +1,6 @@
 class ItemsController < ApplicationController
+  before_action :authenticate_user!
+  
   def new
     @item = Item.new
   end
@@ -37,7 +39,9 @@ class ItemsController < ApplicationController
     #obj.get(response_target: "./"+@item.file.identifier)
     filepath = "https://rails-item1.s3-ap-northeast-1.amazonaws.com/"+@item.file.current_path
     data = open(URI.encode(filepath))
-    send_data data.read, filename: @item.file.identifier, type: "application/wav", disposition: 'inline', stream: 'true', buffer_size: '4096' 
+    send_data data.read, filename: @item.file.identifier, type: "application/wav", disposition: 'inline', stream: 'true', buffer_size: '40960'
+    #stat = File::stat(filepath)
+    #send_file(filepath, :filename => '@item.file.identifier', :length => stat.size)
   end
 
 
