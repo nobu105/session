@@ -13,3 +13,10 @@ Tag.create([
     { name: '悲しい'},
     { name: 'アツい'},
     ])
+
+Admin.create!(
+  id: 1,
+  email: 'test@user',
+  password: 'testtest',
+  password_confirmation: 'testtest'
+  )ra
