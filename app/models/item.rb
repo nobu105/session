@@ -8,6 +8,8 @@ class Item < ApplicationRecord
   has_many :tags, through: :item_tags
 
   validates :title, presence: true
+  validates :text, presence: true
+  validates :file, presence: true
 
 	def liked_by?(user)
     likes.where(user_id: user.id).exists?
