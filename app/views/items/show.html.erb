@@ -52,7 +52,7 @@
                 <!-- </td> -->
               </span>
             <span class="col-xs-3">
-              <%= link_to download_item_path(@item), "data-confirm" => "音源をダウンロードしますか？" do %>
+              <%= link_to download_item_path(@item), data: { turbolinks: false }, "data-confirm" => "音源をダウンロードしますか？" do %>
                 <i class="fas fa-arrow-alt-circle-down"></i>
               <% end %>
             </span>

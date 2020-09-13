@@ -310,5 +310,12 @@ Devise.setup do |config|
   # config.sign_in_after_change_password = true
 end
 Devise.setup do |config|
-  config.omniauth :facebook, ENV['FB_APP_ID'], ENV['FB_APP_SECRET']
+ config.omniauth :facebook, ENV['FB_APP_ID'], ENV['FB_APP_SECRET']
 end
+
+#case Rails.env
+  #when 'production'
+      #config.omniauth :facebook, "ENV['FB_APP_ID']", ENV['FB_APP_SECRET']
+  #when 'development'
+      #config.omniauth :facebook, "ENV['FB_APP_ID_TEST']", "ENV['FB_APP_SECRET_TEST']"
+#end
