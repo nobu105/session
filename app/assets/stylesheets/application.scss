@@ -18,11 +18,11 @@
 @import 'bootstrap';
 @font-face {
 	font-family: "bananaslipplus";
-	src: font-url("/assets/bananaslipplus.otf");
+	src: font-url(asset-path("bananaslipplus.otf"));
 }
 @font-face {
 	font-family: "Makinas-4-Flat";
-	src: font-url("/assets/Makinas-4-Flat.otf");
+	src: font-url(asset-path("Makinas-4-Flat.otf"));
 }
 
 body {
