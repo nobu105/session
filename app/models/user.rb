@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_many :comments
   has_many :likes
 
-  validates :email presence: true
+  validates :email, presence: true
   validates :name, presence: true
   validates :username, presence: true
 
