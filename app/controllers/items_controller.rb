@@ -40,6 +40,7 @@ class ItemsController < ApplicationController
     filepath = "https://rails-item1.s3-ap-northeast-1.amazonaws.com/"+@item.file.current_path
     data = open(URI.encode(filepath))
     send_data data.read, filename: @item.file.identifier, type: "application/wav", disposition: 'inline', stream: 'true', buffer_size: '40960'
+    #redirect_to items_path
     #stat = File::stat(filepath)
     #send_file(filepath, :filename => '@item.file.identifier', :length => stat.size)
   end
