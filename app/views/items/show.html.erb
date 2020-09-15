@@ -119,7 +119,7 @@
               </span>
               <span class="col-xs-3">
                 <% if comment.user_id == current_user.id %>
-                  <%= link_to "編集", edit_item_path(@item,comment.id) %>
+                  <!--<%= link_to "編集", edit_item_path(@item,comment.id) %>-->
                   <%= link_to "削除", item_comment_path(@item,comment.id), method: :delete %>
                 <% end %>
               </span>
