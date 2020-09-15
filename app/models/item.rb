@@ -11,6 +11,8 @@ class Item < ApplicationRecord
   validates :text, presence: true
   validates :file, presence: true
 
+  default_scope -> { order(created_at: :desc) }
+
 	def liked_by?(user)
     likes.where(user_id: user.id).exists?
   end
