@@ -54,7 +54,7 @@
                   <i class="fas fa-arrow-alt-circle-down"></i>
                 <% end %>
               </span>
-              <% if @item.user_id == current_user.id %>
+              <% if item.user_id == current_user.id %>
               <span class="col-xs-2">
                 <%= link_to item_path(item), method: :delete, data: { turbolinks: false }, "data-confirm" => "本当に削除しますか？" do %>
                   <i class="fas fa-trash-alt"></i>
