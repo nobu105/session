@@ -132,4 +132,9 @@ header {
 	box-shadow: none;
 }
 
-@mediaaaa
+@media screen and (max-width:425px) {
+	header {
+	  width: 100%;
+	}
+	
+}
