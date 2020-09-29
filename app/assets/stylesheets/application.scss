@@ -133,8 +133,16 @@ header {
 }
 
 @media screen and (max-width: 425px) {
-  header {
-	width: 100%;
+  header .nav-item {
+	display: none;
+  }
+
+  #hamburger {
+    position: relative;
+    display: brock;
+    width: 30px;
+    height: 25px;
+    margin: 0 0 0 auto;
   }
 
   .main {
