@@ -13,7 +13,7 @@
 
     <!-- 各種リンク。管理者ログイン時と顧客ログイン時、非ログイン時で表示切替。 -->
       <!-- 管理者 -->
-          <% if admin_signed_in? %>
+      <% if admin_signed_in? %>
         <li class="nav-item"><%= link_to 'ホーム', admins_top_path, class: 'nav-link' %>
         </li>
         <li class="nav-item"><%= link_to '会員一覧', admins_users_path, class: 'nav-link' %>
@@ -43,6 +43,9 @@
         <li class="nav-item"><%= link_to 'お問い合わせ', contacts_index_path,　class: 'nav-link' %>
           </li>
       <% end %>
-      </ul>
+    </ul>
   </nav>
+  <div id="hamburger">
+    <span></span>
+  </div>
 </header>
