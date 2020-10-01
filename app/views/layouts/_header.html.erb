@@ -4,13 +4,6 @@
       <a class="navbar-brand" href="/">session</a>
     <ul class="nav navbar-nav navbar-right">
 
-    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarEexample2">
-      <span class="sr-only">Toggle navigation</span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
-
     <!-- 各種リンク。管理者ログイン時と顧客ログイン時、非ログイン時で表示切替。 -->
       <!-- 管理者 -->
       <% if admin_signed_in? %>
@@ -45,7 +38,4 @@
       <% end %>
     </ul>
   </nav>
-  <div id="hamburger">
-    <span></span>
-  </div>
 </header>
