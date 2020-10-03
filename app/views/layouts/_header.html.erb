@@ -2,8 +2,13 @@
   <nav class="navbar navbar-expand-sm bg-light">
     <!-- ロゴ画像 -->
       <a class="navbar-brand" href="/">session</a>
+    <div id="wrapper">
+      <p class="btn-gnavi">
+        <span></span>
+        <span></span>
+        <span></span>
+      </p>
     <ul class="nav navbar-nav navbar-right">
-
     <!-- 各種リンク。管理者ログイン時と顧客ログイン時、非ログイン時で表示切替。 -->
       <!-- 管理者 -->
       <% if admin_signed_in? %>
@@ -14,7 +19,6 @@
         <li class="nav-item"><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: 'nav-link' %></li>
       <!-- ユーザー -->
       <% elsif user_signed_in? %>
-        <p class="text-center">
           <li class="nav-item"><%= link_to 'ホーム', items_path, class: 'nav-link' %>
           </li>
           <li class="nav-item"><%= link_to 'About', '#about' %>
@@ -37,5 +41,12 @@
           </li>
       <% end %>
     </ul>
+    </div>
   </nav>
+
+  <a class="nav-button" href="#">
+    <span></span>
+    <span></span>
+    <span></span>
+  </a>
 </header>

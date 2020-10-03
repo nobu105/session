@@ -132,66 +132,115 @@ header {
 	box-shadow: none;
 }
 
+
+
 @media screen and (max-width: 425px) {
   header .nav-item {
 	display: none;
   }
 
-  header.hamburger {
-    position: relative;
-    display: brock;
+  #wrapper nav {
+    position: fixed;
+    top: 0;
+    right: -300px;
+    width: 300px;
+    height: 100%;
+    padding-top: 50px;
+    background:#333;
+    font-size: 16px;
+    box-sizing: border-box;
+    z-index: 2
+　}
+  #wrapper nav ul li {
+    display:block;
+    padding: 20px 28px
+  }
+
+  #wrapper nav ul li a {
+    text-decoration: none;
+    color: #ddd
+  }
+
+  #wrapper .btn-gnavi {
+    position: fixed;
+    top: 20px;
+    right: 20px;
     width: 30px;
-    height: 25px;
-    margin: 0 0 0 auto;
+    height: 24px;
+    z-index: 3;
+    box-sizing: border-box;
+    cursor: pointer;
+    -webkit-transition: all 400ms;
+    transition: all 400ms
   }
 
-  header .hamburger span {
-   position: absolute;
-   top: 50%;
-   left: 0;
-   display: block;
-   width: 100%;
-   height: 2px;
-   background-color: #fff;
-   transform: translateY(-50%);
+  #wrapper .btn-gnavi span {
+    position: absolute;
+    width: 30px;
+    height: 4px;
+    background: #666;
+    border-radius: 10px;
+    -webkit-transition: all 400ms;
+    transition: all 400ms
   }
 
-  header .hamburger::before {
-   content: '';
-   display: block;
-   position: absolute;
-   top: 0;
-   left: 0;
-   width: 100%;
-   height: 2px;
-   background-color: #fff;
+  #wrapper .btn-gnavi span:nth-child(1) {
+    top: 0
   }
 
-  header .hamburger::after {
-   content: '';
-   display: block;
-   position: absolute;
-   bottom: 0;
-   left: 0;
-   width: 70%;
-   height: 2px;
-   background-color: #fff;
+  #wrapper .btn-gnavi span:nth-child(2) {
+    top: 10px
+  }
+
+  #wrapper .btn-gnavi span:nth-child(3) {
+    top: 20px
+  }
+
+  #wrapper .btn-gnavi.open {
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg)
+  }
+
+  #wrapper .btn-gnavi.open span {
+    background: #666
+  }
+
+  #wrapper .btn-gnavi.open span {
+    width: 24px;
+  }
+  #wrapper .contents section p {
+    position: absolute;
+    top: 50%;
+    width: 30%;
+    line-height: 1.4;
+    font-size: 20px;
+    color: #fff;
+    text-shadow: 0 0 6px #666
+  }
+
+  #wrapper .contents section:nth-child(odd) p {
+    left: 10%
+  }
+
+  #wrapper .contents section:nth-child(even) p {
+    right: 10%
   }
 
   .main {
-    margin-left:33%;
 	width: 100%;
   }
 
   .wrap-video{
     position: absolute;
-    z-index: -100; /*必ず必要*/
+    z-index: -100;
     height: 840px;
+    width: 80%;
+    margin-top: -70%;
   }
 
   .wrap-video video{
     width: 100%;
-    height:100%;
+    height: 100%;
   }
 
   .wrap-video .text{
@@ -202,5 +251,34 @@ header {
     font-size:50px;
     font-weight:bold;
     color:white;
+  }
+  .wrap-video .text .headline{
+  font-size:20px;
+  }
+
+  .signin-box {
+	width: 400px;
+	height: 400px;
+	background-color: white;
+	margin-top: 15%;
+	margin-left: 30%;
+	border: 2px solid #aaa;
+	border-radius: 10px;
+	box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5);
+	padding-left: 5%;
+	padding-top: 3%;
+  }
+
+  .signup-box {
+	width: 400px;
+	height: 550px;
+	background-color: white;
+	margin-top: 8%;
+	margin-left: 32%;
+	border: 2px solid #aaa;
+	border-radius: 10px;
+	box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5);
+	padding-left: 5%;
+	padding-top: 3%;
   }
 }
