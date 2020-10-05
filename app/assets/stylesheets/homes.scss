@@ -193,22 +193,15 @@
   }
 
   .btn1 {
-    color: #FF9933;
+    background: #FF6600;
+	color: #fff;
     border: 2px solid #FF6600;
+    margin-top: 230px;
   }
   .btn2 {
-	color: #009900;
-	border: 2px solid #009900;
-  }
-  .btn1:hover {
-	background: #FF6600;
-	color: #fff;
-	text-decoration: none;
-  }
-  .btn2:hover {
 	background: #009900;
 	color: #fff;
-	text-decoration: none;
+	border: 2px solid #009900;
   }
 
   .btn3 {
